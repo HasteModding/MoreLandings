@@ -7,6 +7,10 @@ Aezurian - Supplied me with the flavor text</br>
 justatiredartist - For being my moral support ♥
 
 # Updates
+
+### v1.1.3
+- Json now formats when saving to file
+
 ### v1.1.2
 - Forgot to chance the default value in the config to 0.5...
 
