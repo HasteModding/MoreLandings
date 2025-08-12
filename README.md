@@ -20,10 +20,11 @@
    - JSON format:
      ```json
      {
-       "Bad":    ["Try again!", "Ouch.", "Not your best."],
-       "Ok":     ["Not bad!", "Getting there."],
-       "Good":   ["Nice!", "Well done!"],
-       "Perfect": ["Legendary!", "Unstoppable!"]
+       "Bad":     ["Try again!", "Ouch.", "Not your best."],
+       "Ok":      ["Not bad!", "Getting there."],
+       "Good":    ["Nice!", "Well done!"],
+       "Perfect": ["Legendary!", "Unstoppable!"],
+       "Saved":   ["You got lucky there."]
      }
      ```
 
@@ -42,10 +43,10 @@
 Open the console (`F1`) and type:
 
 | Command                     | Description                                      |
-|----------------------------|--------------------------------------------------|
-| `MoreLandings.Reload`      | Reloads the JSON file without restarting         |
-| `MoreLandings.JSONPath`    | Prints the exact file path of `MoreLandings.json` |
-| `MoreLandings.What`        | Lists all messages currently loaded by category |
+|-----------------------------|--------------------------------------------------|
+| `MoreLandings.Reload`       | Reloads the JSON file without restarting         |
+| `MoreLandings.JSONPath`     | Prints the exact file path of `MoreLandings.json`|
+| `MoreLandings.Landings`     | Lists all messages currently loaded by category  |
 
 ---
 <!--------------------------------------------------------------------------------------->
@@ -93,6 +94,10 @@ Open the console (`F1`) and type:
 </br>
 
 # Updates
+
+### v1.3.0
+- Added support for Saved landings.
+- Reworked json saving/loading, checking for missing entries.
 
 ### v1.2.0
 - Updated internal SettingsLib.
