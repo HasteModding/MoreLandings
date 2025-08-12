@@ -98,6 +98,7 @@ Open the console (`F1`) and type:
 ### v1.3.0
 - Added support for Saved landings.
 - Reworked json saving/loading, checking for missing entries.
+- Previous versions' settings are replaced by new ones since I changed how they're saved. Rip.
 
 ### v1.2.0
 - Updated internal SettingsLib.
