@@ -1,4 +1,4 @@
-﻿namespace MoreLandings;
+namespace MoreLandings;
 
 [Landfall.Modding.LandfallPlugin]
 public class MoreLandings

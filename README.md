@@ -1,4 +1,4 @@
-﻿# MoreLandings
+# MoreLandings
 
 ### 🪂 How It Works
 

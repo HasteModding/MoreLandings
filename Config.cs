@@ -1,4 +1,4 @@
-﻿namespace MoreLandings;
+namespace MoreLandings;
 
 public class Config
 {
