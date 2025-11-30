@@ -13,13 +13,13 @@ public class Config
 		ForceType = new HastyEnum<MoreLandingType>(cfg, "Force Landing Type", "Forces the landing type to be a specific one. Useful for testing.", new()
 		{
 			Choices = Enum.GetValues(typeof(MoreLandingType)).Cast<MoreLandingType>().Select(l => l.ToString()).ToList(),
-			DefaultValue = MoreLandingType.None,
+			DefaultValue = MoreLandingType.None
 		});
 
 		MinTextTime = new HastyFloat(cfg, "Text Time", "How long landing text is present on screen (lower is longer)", new()
 		{
 			MinMax = new(0.1f, 0.99f),
-			DefaultValue = 0.25f,
+			DefaultValue = 0.25f
 		});
 
 		new HastyButton(cfg, "Reset", "Resets values to their default state", new()
@@ -30,7 +30,7 @@ public class Config
 				ForceType.Reset();
 				MinTextTime.Reset();
 			},
-			Text = "Reset Settings",
+			Text = "Reset Settings"
 		});
 
 		LoadStrings();
@@ -92,34 +92,24 @@ public class Config
 				Dictionary<MoreLandingType, List<string>>? loadedStrings
 					= Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<MoreLandingType, List<string>>>(File.ReadAllText(jsonPath));
 
-				// If we could load the json data, we then go through the loaded data and check if it's missing entries
-				if (loadedStrings != null)
-				{
-					foreach (KeyValuePair<MoreLandingType, List<string>> entry in LandingStrings)
-					{
-						// Check if the LandingType is in the loaded data, if not, add the default value
-						if (!loadedStrings.ContainsKey(entry.Key))
-						{
-							loadedStrings[entry.Key] = [.. LandingStrings[entry.Key]];
-						}
-						// If the entry exists, ensure it has at least one string
-						else
-						{
-							if (loadedStrings[entry.Key].Count == 0)
-							{
-								loadedStrings[entry.Key] = [.. LandingStrings[entry.Key]];
-							}
-						}
-					}
+				// If we could not load the json data, exit.
+				if (loadedStrings == null) { Informer.Inform("Somehow the loadedStrings is null...?"); return; }
 
-					// Then finally set the landing strings to the loaded data once we've verified it has all the right data
-					/// 👍👍👍👍👍👍👍👍 I forgot this line for so long, wondering why it wasn't loading new strings... 👎👎👎👎👎👎👎👎
-					LandingStrings = loadedStrings;
-				}
-				else
+				// Go through the loaded data and check if it's missing entries
+				foreach (KeyValuePair<MoreLandingType, List<string>> entry in LandingStrings)
 				{
-					Informer.Inform("Somehow the loadedStrings is null...?");
+					// Check if the LandingType is in the loaded data, if not, add the default value
+					/// OR
+					// If the entry exists, ensure it has at least one string
+					if (!loadedStrings.ContainsKey(entry.Key) || loadedStrings[entry.Key].Count == 0)
+					{
+                        loadedStrings[entry.Key] = [.. LandingStrings[entry.Key]];
+                    }
 				}
+
+				// Then finally set the landing strings to the loaded data once we've verified it has all the right data
+				/// 👍👍👍👍👍👍👍👍 I forgot this line for so long, wondering why it wasn't loading new strings... 👎👎👎👎👎👎👎👎
+				LandingStrings = loadedStrings;
 			}
 			// Else, save the full default data to the file for future use
 			else
@@ -130,11 +120,11 @@ public class Config
 		}
 		catch (Newtonsoft.Json.JsonException jex)
 		{
-			Informer.InformTrace(jex, "Error deseralizing json file. Using default settings.", InformType.Error);
+			Informer.Inform(jex, "Error deseralizing json file. Using default settings.", InformType.Error);
 		}
 		catch (Exception ex)
 		{
-			Informer.InformTrace(ex, "Error loading landing strings from file. Using default settings.", InformType.Error);
+			Informer.Inform(ex, "Error loading landing strings from file. Using default settings.", InformType.Error);
 		}
 	}
 }
