@@ -11,11 +11,12 @@
 
 ### 📝 Customizing Messages
 
-1. **Find the config file**  
-   - Stored in `UnityEngine.Application.persistentDataPath`.  
-   - Use the console command `MoreLandings.JSONPath` to print the full path.
+1. **Find the config file**
+   - Press the "Open Folder" button in settings.  
+   ~~- Stored in `UnityEngine.Application.persistentDataPath`.~~  
+   ~~- Use the console command `MoreLandings.JSONPath` to print the full path.~~
 
-2. **Edit `MoreLandings.json`**  
+3. **Edit `MoreLandings.json`**  
    - Open with any text editor (Notepad, VS Code, etc.).
    - JSON format:
      ```json
@@ -28,10 +29,11 @@
      }
      ```
 
-3. **Save the file**  
+4. **Save the file**  
    - Make sure it's still valid JSON.
+   - Use a [Online Validator](https://codebeautify.org/jsonvalidator/) if you're unsure.
 
-4. **Reload in-game**  
+5. **Reload in-game**  
    - Use `MoreLandings.Reload` in the console to hot-reload your messages.
    - If for some reason your file is broken, delete it and relead in-game. It will create a new file.
 
@@ -94,6 +96,10 @@ Open the console (`F1`) and type:
 </br>
 
 # Updates
+
+### v1.4.0
+- Added "Open Folder" in the settings.
+- Minor cleaning in the code.
 
 ### v1.3.0
 - Added support for Saved landings.
